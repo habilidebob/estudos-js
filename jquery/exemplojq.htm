@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo jQuery</title>
+    <style>
+        .formato{
+            background-color: aqua;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <img src="foto1.jpg" alt="Foto1" id="exemplo">
+    <h1 id="texto1">Texto 1</h1>
+    <h1 id="texto2">Texto 2</h1>
+    <p class="paragrafo">Texto do paragrafo primeiro.</p>
+    <p class="paragrafo">Texto do paragrafo segundo.</p>
+    <button id="botao">Clique-me!</button>
+    <input type="text" id="entrada">
+    
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+
+<script>
+
+    var cliques = 0;
+
+    $("#botao").on("click", function(){
+        if(cliques == 0){
+            $("#exemplo").attr("src" , "foto2.jpg");
+            cliques++;
+        }else if(cliques == 1){
+            $("#exemplo").attr("src" , "foto1.jpg");
+            cliques--;
+        }
+        
+
+
+        //$("#texto1").html("Mudei o texto hahahah").addClass('formato');
+        //$("#texto2").fadeOut("slow");
+        //$(".paragrafo").text("Texto novo");
+        //$("#texto2").css('background-color', 'red');
+        // Obter o valor de #entrada:
+        //var x = $("#entrada").val();
+        //alert(x);
+
+    });
+</script>
+
+
+
+</body>
+</html>

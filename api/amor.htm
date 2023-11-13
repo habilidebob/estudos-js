@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora do Amor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Calculadora do Amor</h1>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                
+                    <div class="form-group">
+                        <label for="parceiro1">Parceiro 1</label>
+                        <input type="text" class="form-control" id="parceiro1" placeholder="Nome do Parceiro 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="parceiro2">Parceiro 2</label>
+                        <input type="text" class="form-control" id="parceiro2" placeholder="Nome do Parceiro 2">
+                    </div>
+                    <button id="calcular" class="btn btn-danger btn-block" onclick="calcularAmor()">Calcular</button>
+                
+            </div>
+            <div class="col-md-6">
+                <h2>Resultado</h2>
+                <p>Combinação: <span id="combinacao"></span></p>
+                <p>Porcentagem de Amor: <span id="porcentagemAmor"></span>%</p>
+                <p>Sugestão: <span id="sugestao"></span></p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       // Insira seu código JavaScript aqui:
+       function calcularAmor() {
+            // Desativar o botão:
+            calcular.disabled = true;
+            const link = "https://apisenac.estevaorada.repl.co/api/amor/"+parceiro1.value+"/"+parceiro2.value;
+
+            fetch(link).then((resposta) => resposta.json()).then(
+                (dados) => {
+                    combinacao.innerHTML = dados.combinacao;
+                    porcentagemAmor.innerHTML = dados.porcentagemAmor;
+                    sugestao.innerHTML = dados.sugestao;
+                   
+                }
+            ).then(() => {
+                // Reativar o botão:
+                calcular.disabled = false;
+            })
+        }
+    </script>
+</body>
+</html>

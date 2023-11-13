@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensadores Famosos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <label for="pensadoresSelect">Escolha um Pensador Famoso:</label>
+                <select class="form-control" id="pensadoresSelect">
+                    
+                    
+                </select>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="display-4" id="frasePensador">Frase</h1>
+            </div>
+        </div>
+    </div>
+
+    =
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var link = "https://apisenac.estevaorada.repl.co/api/autores";
+            $.getJSON(link).done(function(dados){
+                $("#pensadoresSelect").html();
+                $("#pensadoresSelect").html("<option value=\"0\">"+dados[0]+"</option>"
+                +"<option value=\"1\">"+dados[1]+"</option>"
+                +"<option value=\"2\">"+dados[2]+"</option>"
+                +"<option value=\"3\">"+dados[3]+"</option>");
+            }).fail(function(){
+                alert("Houve um erro ao obter a frase!");
+            })
+        });
+
+        $("#pensadoresSelect").on("change", function(){
+           
+            var link = "https://apisenac.estevaorada.repl.co/api/autores/"+pensadoresSelect.value;
+            $.getJSON(link).done(function(dados){
+                $("#frasePensador").text(dados.frase);
+            }).fail(function(){
+                alert("Houve um erro ao obter a frase!");
+            })
+        })
+    </script>
+</body>
+</html>
